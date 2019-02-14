@@ -1,0 +1,13 @@
+<launch>
+
+	<!-- Run the map server -->
+	<arg name="map_file" default="$(find gmapping)/maps/map_test.yaml"/>
+	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+	<!--- Run AMCL-->
+	<include file="$(find my_amcl_launcher)/launch/change_map.launch"/>
+
+	<!-- Run Move Base -->
+	<include file="$(find my_move_base_launcher)/launch/my_move_base_launch_2.launch" />
+
+</launch>
